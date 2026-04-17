@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Délices de Chez Nous – Cuisine Ivoirienne Authentique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange:   #E8631A;
+      --gold:     #D4A017;
+      --green:    #2D6A2F;
+      --cream:    #FDF6EC;
+      --brown:    #5C3317;
+      --dark:     #1A0E05;
+      --light:    #FFFBF4;
+    }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: .5;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 4rem;
+  background: rgba(26,14,5,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212,160,23,.25);
+}
+.nav-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.4rem; list-style: none; }
+.nav-links a {
+  color: var(--cream); text-decoration: none;
+  font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-btn {
+  background: var(--orange); color: #fff;
+  border: none; padding: .6rem 1.6rem; border-radius: 30px;
+  font-size: .9rem; letter-spacing: 1px; cursor: pointer;
+  transition: transform .2s, background .3s;
+}
+.nav-btn:hover { background: var(--gold); transform: scale(1.04); }
+
+/* ─── HERO ─── */
+#hero {
+  position: relative; height: 100vh; min-height: 650px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(160deg, rgba(92,51,23,.85) 0%, rgba(26,14,5,.7) 60%, rgba(46,106,47,.5) 100%),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80') center/cover no-repeat;
+}
+/* Batik pattern overlay */
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(232,99,26,.18) 0%, transparent 55%),
+                    radial-gradient(circle at 80% 30%, rgba(212,160,23,.15) 0%, transparent 45%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 2rem;
+  animation: heroFade .9s ease both;
+}
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(212,160,23,.2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .78rem; letter-spacing: 3px; text-transform: uppercase;
+  padding: .4rem 1.2rem; border-radius: 20px;
+  margin-bottom: 1.4rem;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900; color: #fff;
+  line-height: 1.07;
+  text-shadow: 0 4px 30px rgba(0,0,0,.4);
+}
+.hero-title span { color: var(--gold); font-style: italic; }
+.hero-sub {
+  margin-top: 1.2rem;
+  color: rgba(255,255,255,.78);
+  font-size: 1.15rem; font-weight: 300;
+  letter-spacing: .5px;
+}
+.hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--orange);
+  color: #fff; border: none;
+  padding: .85rem 2.4rem; border-radius: 40px;
+  font-size: 1rem; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  letter-spacing: .5px;
+  box-shadow: 0 8px 24px rgba(232,99,26,.45);
+  transition: transform .2s, box-shadow .3s;
+  display: inline-block;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(232,99,26,.55); }
+.btn-secondary {
+  background: transparent;
+  color: #fff; border: 2px solid rgba(255,255,255,.55);
+  padding: .83rem 2.4rem; border-radius: 40px;
+  font-size: 1rem; cursor: pointer; text-decoration: none;
+  transition: border-color .3s, color .3s;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-down {
+  position: absolute; bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  color: rgba(255,255,255,.5); font-size: .75rem; letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+.scroll-down::before {
+  content: '↓'; font-size: 1.3rem; color: var(--gold);
+}
+@keyframes bounce {
+  0%,100%{ transform: translateX(-50%) translateY(0); }
+  50%    { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ─── SECTION TITLES ─── */
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-tag {
+  display: inline-block;
+  color: var(--orange); font-size: .78rem; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--brown);
+  line-height: 1.15;
+}
+.section-title span { color: var(--orange); font-style: italic; }
+.section-line {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--gold));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* ─── ABOUT ─── */
+#about {
+  padding: 8rem 4rem 6rem;
+  background: var(--light);
+  position: relative; z-index: 1;
+}
+.about-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img-wrap img {
+  width: 100%; border-radius: 4px 60px 4px 60px;
+  object-fit: cover; height: 480px;
+  box-shadow: 20px 20px 0 var(--gold);
+}
+.about-badge {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--orange); color: #fff;
+  border-radius: 50%; width: 110px; height: 110px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  box-shadow: 0 8px 24px rgba(232,99,26,.4);
+}
+.about-badge strong { font-size: 2rem; line-height: 1; }
+.about-badge span { font-size: .72rem; letter-spacing: 1px; text-transform: uppercase; }
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 700;
+  color: var(--brown); line-height: 1.2; margin-bottom: 1.4rem;
+}
+.about-text h2 em { color: var(--orange); }
+.about-text p {
+  color: #5a4030; line-height: 1.85; font-size: 1.05rem;
+  margin-bottom: 1.2rem; font-weight: 300;
+}
+.about-stats {
+  display: flex; gap: 2.5rem; margin-top: 2rem;
+}
+.stat strong { font-size: 2.4rem; font-family: 'Playfair Display', serif; color: var(--orange); display: block; }
+.stat span { font-size: .82rem; color: #7a6050; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ─── MENU SECTION ─── */
+#menu {
+  padding: 7rem 4rem;
+  background: var(--cream);
+  position: relative; z-index: 1;
+}
+#menu::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.menu-tabs {
+  display: flex; gap: 1rem; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 3rem;
+}
+.tab-btn {
+  padding: .55rem 1.8rem; border-radius: 30px; border: 2px solid transparent;
+  font-size: .9rem; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: all .3s;
+  background: transparent; color: var(--brown); border-color: rgba(92,51,23,.3);
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--orange); color: #fff; border-color: var(--orange);
+}
+.menu-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 2rem;
+}
+.menu-card {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(92,51,23,.08);
+  transition: transform .3s, box-shadow .3s;
+  display: flex; flex-direction: column;
+}
+.menu-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(92,51,23,.16); }
+.menu-card-img {
+  height: 210px; overflow: hidden; position: relative;
+}
+.menu-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.menu-card:hover .menu-card-img img { transform: scale(1.06); }
+.menu-card-badge {
+  position: absolute; top: .8rem; left: .8rem;
+  background: var(--orange); color: #fff;
+  font-size: .72rem; padding: .25rem .7rem; border-radius: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.menu-card-body { padding: 1.4rem; flex: 1; }
+.menu-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; color: var(--brown); margin-bottom: .4rem;
+}
+.menu-card-body p {
+  font-size: .9rem; color: #7a6050; line-height: 1.65; font-weight: 300;
+}
+.menu-card-foot {
+  padding: 1rem 1.4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(92,51,23,.08);
+}
+.price { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--orange); font-weight: 700; }
+.add-btn {
+  background: var(--green); color: #fff;
+  border: none; border-radius: 50%; width: 36px; height: 36px;
+  font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .3s, transform .2s;
+}
+.add-btn:hover { background: var(--orange); transform: rotate(90deg); }
+
+/* ─── SPECIALTIES BANNER ─── */
+#banner {
+  padding: 5rem 4rem;
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark) 100%);
+  position: relative; overflow: hidden; z-index: 1;
+}
+#banner::before {
+  content: '🌿';
+  position: absolute; font-size: 18rem; opacity: .04;
+  top: -3rem; right: -2rem; line-height: 1;
+}
+.banner-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; text-align: center;
+}
+.banner-item { color: #fff; }
+.banner-icon { font-size: 2.8rem; margin-bottom: .8rem; }
+.banner-item h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); margin-bottom: .5rem; }
+.banner-item p { font-size: .92rem; color: rgba(255,255,255,.65); font-weight: 300; line-height: 1.6; }
+
+/* ─── GALLERY ─── */
+#galerie {
+  padding: 7rem 4rem;
+  background: var(--light); position: relative; z-index: 1;
+}
+.gallery-masonry {
+  max-width: 1200px; margin: 0 auto;
+  columns: 3; column-gap: 1rem;
+}
+.gallery-item {
+  break-inside: avoid; margin-bottom: 1rem;
+  border-radius: 12px; overflow: hidden;
+  position: relative; cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; display: block;
+  transition: transform .5s;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,14,5,.75) 100%);
+  opacity: 0; transition: opacity .3s;
+  display: flex; align-items: flex-end; padding: 1rem;
+  color: #fff; font-size: .9rem; font-family: 'Playfair Display', serif;
+}
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+/* ─── TÉMOIGNAGES ─── */
+#avis {
+  padding: 7rem 4rem;
+  background: var(--cream); position: relative; z-index: 1;
+}
+.avis-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 2rem;
+}
+.avis-card {
+  background: #fff; border-radius: 16px; padding: 2rem;
+  box-shadow: 0 4px 20px rgba(92,51,23,.07);
+  position: relative;
+}
+.avis-card::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; color: var(--gold); opacity: .2;
+  position: absolute; top: -.5rem; left: 1.2rem;
+  line-height: 1;
+}
+.stars { color: var(--gold); font-size: 1rem; margin-bottom: .8rem; }
+.avis-card p { font-size: .97rem; color: #5a4030; line-height: 1.75; font-weight: 300; font-style: italic; }
+.avis-author {
+  display: flex; align-items: center; gap: .8rem; margin-top: 1.4rem;
+}
+.avis-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--gold);
+}
+.avis-author-name { font-weight: 700; color: var(--brown); font-size: .95rem; }
+.avis-author-loc { font-size: .8rem; color: #9a8070; }
+
+/* ─── RESERVATION ─── */
+#reservation {
+  padding: 7rem 4rem;
+  background: linear-gradient(160deg, var(--orange) 0%, #c0430d 100%);
+  position: relative; z-index: 1; overflow: hidden;
+}
+#reservation::before {
+  content: '🍲';
+  position: absolute; font-size: 22rem; opacity: .06;
+  bottom: -4rem; left: -3rem; line-height: 1;
+}
+.reservation-wrap {
+  max-width: 700px; margin: 0 auto; text-align: center;
+}
+.reservation-wrap .section-title { color: #fff; }
+.reservation-wrap .section-tag { color: rgba(255,255,255,.75); }
+.reservation-wrap p { color: rgba(255,255,255,.85); margin: 1.2rem 0 2.5rem; font-size: 1.05rem; font-weight: 300; }
+.res-form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  text-align: left;
+}
+.res-form input, .res-form select {
+  padding: .85rem 1.2rem; border: 2px solid rgba(255,255,255,.35);
+  border-radius: 10px; background: rgba(255,255,255,.15);
+  color: #fff; font-size: .95rem; outline: none;
+  transition: border-color .3s;
+}
+.res-form input::placeholder { color: rgba(255,255,255,.6); }
+.res-form input:focus, .res-form select:focus { border-color: rgba(255,255,255,.9); }
+.res-form select option { color: var(--dark); }
+.res-form .full { grid-column: 1 / -1; }
+.res-submit {
+  grid-column: 1 / -1;
+  padding: 1rem 2rem; background: #fff; color: var(--orange);
+  border: none; border-radius: 40px; font-size: 1.1rem; font-weight: 700;
+  cursor: pointer; letter-spacing: .5px;
+  transition: transform .2s, box-shadow .3s;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.res-submit:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+
+/* ─── CONTACT ─── */
+#contact {
+  padding: 6rem 4rem 4rem;
+  background: var(--light); position: relative; z-index: 1;
+}
+.contact-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start;
+}
+.contact-info h2 {
+  font-family: 'Playfair Display', serif; font-size: 2rem;
+  color: var(--brown); margin-bottom: 2rem;
+}
+.contact-item { display: flex; gap: 1rem; margin-bottom: 1.6rem; align-items: flex-start; }
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(232,99,26,.12); display: flex;
+  align-items: center; justify-content: center; font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.contact-item-text strong { display: block; color: var(--brown); margin-bottom: .2rem; }
+.contact-item-text span { color: #7a6050; font-size: .95rem; font-weight: 300; }
+.map-placeholder {
+  height: 320px; border-radius: 16px;
+  background: linear-gradient(135deg, #e8d5b0, #d4b080);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--brown); font-family: 'Playfair Display', serif; font-size: 1.1rem; gap: .8rem;
+  box-shadow: 0 8px 30px rgba(92,51,23,.12);
+}
+.map-placeholder span { font-size: 2.5rem; }
+.hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 2rem; margin-top: 1.5rem; }
+.hours-item { display: flex; justify-content: space-between; padding: .4rem 0; border-bottom: 1px dashed rgba(92,51,23,.15); font-size: .92rem; }
+.hours-item .day { color: var(--brown); font-weight: 700; }
+.hours-item .time { color: #7a6050; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  padding: 4rem 4rem 2rem;
+  position: relative; z-index: 1;
+}
+.footer-top {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand .nav-logo { font-size: 2rem; display: block; margin-bottom: 1rem; }
+.footer-brand p { color: rgba(255,255,255,.5); font-size: .9rem; font-weight: 300; line-height: 1.7; }
+.footer-social { display: flex; gap: .8rem; margin-top: 1.4rem; }
+.social-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.6); font-size: 1rem; text-decoration: none;
+  transition: border-color .3s, color .3s;
+}
+.social-btn:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col h4 { color: var(--gold); font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: .6rem; }
+.footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: color .3s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.3); font-size: .82rem;
+}
+.flag { font-size: 1.2rem; }
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.92); align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; }
+.lightbox-close {
+  position: fixed; top: 1.5rem; right: 1.5rem;
+  background: none; border: none; color: #fff; font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+  background: var(--green); color: #fff;
+  padding: .85rem 2rem; border-radius: 30px;
+  font-size: .95rem; box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  transition: transform .4s; z-index: 300;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #about, #menu, #galerie, #avis, #reservation, #contact { padding: 5rem 1.5rem; }
+  .about-grid, .contact-grid, .footer-top { grid-template-columns: 1fr; }
+  .gallery-masonry { columns: 2; }
+  .banner-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .res-form { grid-template-columns: 1fr; }
+  .res-form .full { grid-column: 1; }
+}
+@media (max-width: 560px) {
+  .gallery-masonry { columns: 1; }
+  .about-stats { flex-direction: column; gap: 1rem; }
+}
+
+/* ─── ANIMATE ON SCROLL ─── */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">Les Délices de Chez Nous</a>
+  <ul class="nav-links">
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Réserver</button>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🌿 Cuisine Ivoirienne Authentique</div>
+    <h1 class="hero-title">Les Délices de<br/><span>Chez Nous</span></h1>
+    <p class="hero-sub">Saveurs authentiques de Côte d'Ivoire · Tradition & Passion dans chaque plat</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Voir le menu</a>
+      <a href="#galerie" class="btn-secondary">Découvrir</a>
+    </div>
+  </div>
+  <div class="scroll-down">Défiler</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="WhatsApp Image 2026-04-15 at 12.52.47 (2).jpeg" alt="Cuisine ivoirienne authentique" />
+      <div class="about-badge"><strong>15+</strong><span>ans</span></div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-tag">Notre Histoire</div>
+      <h2>La saveur de <em>chez nous</em>, au cœur de votre table</h2>
+      <p>Fondée avec amour et passion, notre cuisine célèbre les richesses culinaires de la Côte d'Ivoire. Chaque plat est préparé à partir de produits frais, sélectionnés avec soin, pour vous faire voyager au cœur d'Abidjan.</p>
+      <p>De l'attiéké grillé au foutou sauce graine, en passant par le kedjenou et les alokos dorés, nous perpétuons les traditions de nos mères et grand-mères avec fierté.</p>
+      <div class="about-stats">
+        <div class="stat"><strong>2 500+</strong><span>Clients satisfaits</span></div>
+        <div class="stat"><strong>35+</strong><span>Plats au menu</span></div>
+        <div class="stat"><strong>🏆 1er</strong><span>Prix qualité 2023</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+
+<section id="menu">
+  <div class="section-header reveal">
+    <div class="section-tag">Notre Cuisine</div>
+    <h2 class="section-title">Le <span>Menu</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab-btn active">Tous</button>
+    <button class="tab-btn">Plats principaux</button>
+    <button class="tab-btn">Soupes & Sauces</button>
+    <button class="tab-btn">Boissons</button>
+    <button class="tab-btn">Desserts</button>
+  </div>
+  <div class="menu-grid" id="menuGrid">
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 12.52.47 (1).jpeg" alt="tchep au poisson" />
+    <span class="menu-card-badge">⭐ Populaire</span>
+  </div>
+  <div class="menu-card-body">
+    <h3>tchep au poisson</h3>
+    <p>riz au gras avec du poisson grillé. Le classique africain par excellence.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">3 500 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Attiéké Poisson Braisé')">+</button>
+  </div>
+</div>
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 16.14.51 (1).jpeg" alt="Foutou Sauce Graine" />
+    <span class="menu-card-badge">🌿 Maison</span>
+  </div>
+  <div class="menu-card-body">
+    <h3>Foutou Sauce Graine</h3>
+    <p>Foutou de banane plantain & igname avec une sauce graine onctueuse, poulet fumé et épices secrètes de la maison.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">4 000 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Foutou Sauce Graine')">+</button>
+  </div>
+</div>
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 16.14.46.jpeg" alt="Kedjenou Poulet" />
+    <span class="menu-card-badge">🔥 Signature</span>
+  </div>
+  <div class="menu-card-body">
+    <h3>Kedjenou de Poulet</h3>
+    <p>Poulet fermier mijoté lentement dans une canari avec légumes, épices et tomates. Une recette baoulé transmise depuis trois générations.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">5 500 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Kedjenou de Poulet')">+</button>
+  </div>
+</div>
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 16.15.00 (1).jpeg" alt="Aloko" />
+  </div>
+  <div class="menu-card-body">
+    <h3>Aloko & Omelette</h3>
+    <p>Bananes plantains bien mûres frites à l'huile dorée, servies avec une omelette aux légumes et sauce pimentée maison.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">2 500 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Aloko & Omelette')">+</button>
+  </div>
+</div>
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 16.15.05 (1).jpeg" alt="Riz Gras" />
+    <span class="menu-card-badge">👨‍👩‍👧 Familial</span>
+  </div>
+  <div class="menu-card-body">
+    <h3>Riz Gras & Poulet Yassa</h3>
+    <p>Riz parfumé cuit dans un bouillon riche, accompagné d'un poulet yassa à l'oignon confit, citron et moutarde.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">4 500 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Riz Gras Poulet Yassa')">+</button>
+  </div>
+</div>
+
+<div class="menu-card reveal">
+  <div class="menu-card-img">
+    <img src="WhatsApp Image 2026-04-15 at 16.14.27.jpeg" alt="Soupe Kandia" />
+  </div>
+  <div class="menu-card-body">
+    <h3>Soupe Kandia</h3>
+    <p>Bouillon de gombos et huile de palme avec fruits de mer, crevettes fumées et épices du terroir. Un voyage en Côte d'Ivoire.</p>
+  </div>
+  <div class="menu-card-foot">
+    <span class="price">4 200 FCFA</span>
+    <button class="add-btn" onclick="addToCart('Soupe Kandia')">+</button>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- BANNER -->
+
+<section id="banner">
+  <div class="banner-grid">
+    <div class="banner-item reveal">
+      <div class="banner-icon">🌿</div>
+      <h3>100% Naturel</h3>
+      <p>Ingrédients frais sélectionnés chaque matin au marché, sans conservateurs ni additifs.</p>
+    </div>
+    <div class="banner-item reveal">
+      <div class="banner-icon">👩‍🍳</div>
+      <h3>Chefs Expérimentés</h3>
+      <p>Nos chefs sont formés aux recettes traditionnelles ivoiriennes transmises de génération en génération.</p>
+    </div>
+    <div class="banner-item reveal">
+      <div class="banner-icon">🚚</div>
+      <h3>Livraison Rapide</h3>
+      <p>Commandez en ligne et recevez vos plats chauds à domicile en moins de 45 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+
+<section id="galerie">
+  <div class="section-header reveal">
+    <div class="section-tag">Nos Créations</div>
+    <h2 class="section-title">La <span>Galerie</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="gallery-masonry">
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="WhatsApp Image 2026-04-15 at 16.14.46.jpeg" alt="Plat ivoirien" />
+      <div class="gallery-item-overlay">kédjénou poulet</div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="WhatsApp Image 2026-04-15 at 12.52.47 (3).jpeg" alt="Cuisine africaine" />
+      <div class="gallery-item-overlay">Cuisine du Terroir</div>
+    </div>
+  
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="WhatsApp Image 2026-04-15 at 16.14.27.jpeg" alt="Sauce" />
+      <div class="gallery-item-overlay">Sauce Maison</div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="WhatsApp Image 2026-04-15 at 16.15.05 (1).jpeg" alt="Riz" />
+      <div class="gallery-item-overlay">Riz du Chef</div>
+    </div>
+    <div class="gallery-item" onclick="openLight(this)">
+      <img src="WhatsApp Image 2026-04-15 at 16.15.00 (1).jpeg" alt="Aloko" />
+      <div class="gallery-item-overlay">Aloko Doré</div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+
+<section id="avis">
+  <div class="section-header reveal">
+    <div class="section-tag">Ce qu'on dit de nous</div>
+    <h2 class="section-title">Avis de nos <span>Clients</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="avis-grid">
+    <div class="avis-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>Le meilleur attiéké que j'ai mangé depuis longtemps ! On se croirait vraiment dans les maquis d'Abidjan. La sauce graine est divine, authentique à 100%.</p>
+      <div class="avis-author">
+        <img class="avis-avatar" src="https://i.pravatar.cc/100?img=47" alt="Aminata K." />
+        <div><div class="avis-author-name">Aminata K.</div><div class="avis-author-loc">📍 Paris, France</div></div>
+      </div>
+    </div>
+    <div class="avis-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>Le kedjenou de poulet m'a rappelé les repas de ma grand-mère. La viande est tendre, le bouillon parfumé... c'est de la cuisine faite avec âme !</p>
+      <div class="avis-author">
+        <img class="avis-avatar" src="https://i.pravatar.cc/100?img=32" alt="Konan B." />
+        <div><div class="avis-author-name">Konan B.</div><div class="avis-author-loc">📍 Abidjan, CI</div></div>
+      </div>
+    </div>
+    <div class="avis-card reveal">
+      <div class="stars">★★★★☆</div>
+      <p>Excellente découverte ! Les alokos sont parfaitement croustillants. Service chaleureux et cadre très agréable. Je recommande vivement à tous les amateurs.</p>
+      <div class="avis-author">
+        <img class="avis-avatar" src="https://i.pravatar.cc/100?img=12" alt="Marie L." />
+        <div><div class="avis-author-name">Marie L.</div><div class="avis-author-loc">📍 Lyon, France</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+
+<section id="reservation">
+  <div class="reservation-wrap">
+    <div class="section-tag">Envie d'une table ?</div>
+    <h2 class="section-title">Réservez votre <span style="color:#fff;font-style:italic">Table</span></h2>
+    <p>Réservez dès maintenant et vivez une expérience culinaire ivoirienne inoubliable.</p>
+    <form class="res-form" onsubmit="handleReservation(event)">
+      <input type="text" placeholder="Votre prénom & nom" required />
+      <input type="tel" placeholder="Téléphone" required />
+      <input type="date" required />
+      <select>
+        <option>12h00</option><option>12h30</option><option>13h00</option>
+        <option>19h00</option><option>19h30</option><option>20h00</option><option>20h30</option>
+      </select>
+      <select class="full">
+        <option>1 personne</option><option>2 personnes</option><option>3 personnes</option>
+        <option>4 personnes</option><option>5+ personnes</option>
+      </select>
+      <button type="submit" class="res-submit">Confirmer ma réservation ✓</button>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="section-tag">Nous Trouver</div>
+      <h2>Venez nous<br/>rendre visite</h2>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-item-text">
+          <strong>Adresse</strong>
+          <span>12 Rue du Plateau, Marcory<br/>Abidjan, Côte d'Ivoire</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-item-text">
+          <strong>Téléphone</strong>
+          <span>+225 07 00 00 00 00</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          <span>contact@delicesdecheznous.ci</span>
+        </div>
+      </div>
+      <h4 style="color:var(--brown);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-top:1.8rem;margin-bottom:.8rem;">Horaires d'ouverture</h4>
+      <div class="hours-grid">
+        <div class="hours-item"><span class="day">Lundi</span><span class="time">11h – 22h</span></div>
+        <div class="hours-item"><span class="day">Mardi</span><span class="time">11h – 22h</span></div>
+        <div class="hours-item"><span class="day">Mercredi</span><span class="time">11h – 22h</span></div>
+        <div class="hours-item"><span class="day">Jeudi</span><span class="time">11h – 22h</span></div>
+        <div class="hours-item"><span class="day">Vendredi</span><span class="time">11h – 23h</span></div>
+        <div class="hours-item"><span class="day">Samedi</span><span class="time">10h – 23h</span></div>
+        <div class="hours-item"><span class="day">Dimanche</span><span class="time">10h – 21h</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="map-placeholder">
+        <span>🗺️</span>
+        <strong>12 Rue du Plateau, Marcory – Abidjan</strong>
+        <small style="color:#7a6050;">Côte d'Ivoire 🇨🇮</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Les Délices de Chez Nous</a>
+      <p>Une cuisine ivoirienne authentique préparée avec amour, passion et les meilleurs produits frais du terroir.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" title="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram">📸</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        <a class="social-btn" href="#" title="TikTok">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#">Plats principaux</a></li>
+        <li><a href="#">Soupes & Sauces</a></li>
+        <li><a href="#">Boissons</a></li>
+        <li><a href="#">Desserts</a></li>
+        <li><a href="#">Menu du jour</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Le Restaurant</h4>
+      <ul>
+        <li><a href="#">Notre histoire</a></li>
+        <li><a href="#">L'équipe</a></li>
+        <li><a href="#">Galerie</a></li>
+        <li><a href="#">Événements</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Réservation</a></li>
+        <li><a href="#">Livraison</a></li>
+        <li><a href="#">Traiteur</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>©️ 2025 Les Délices de Chez Nous · Tous droits réservés</span>
+    <span><span class="flag">🇨🇮</span> Fait avec ❤️ en Côte d'Ivoire</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">✕</button>
+  <img id="lightboxImg" src="" alt="" />
+</div>
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Toast
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // Add to cart
+  function addToCart(name) { showToast('✓ ' + name + ' ajouté au panier !'); }
+
+  // Reservation
+  function handleReservation(e) {
+    e.preventDefault();
+    showToast('🎉 Réservation confirmée ! À bientôt.');
+    e.target.reset();
+  }
+
+  // Lightbox
+  function openLight(el) {
+    const img = el.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // Nav active class on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(26,14,5,.97)' : 'rgba(26,14,5,.92)';
+  });
+</script>
+
+</body>
+</html>

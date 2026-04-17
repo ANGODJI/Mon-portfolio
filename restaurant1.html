@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Au Dabali | Restaurant Ivoirien – Authenticité & Modernité</title>
+  <!-- Google Fonts: typographie sans-serif moderne (Inter + fallback) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (gratuit) pour icônes minimalistes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #1A1A1A;
+      scroll-behavior: smooth;
+      line-height: 1.4;
+    }
+
+    /* container largeur max et marges auto pour respo */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: #FFFFFF;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1E1E1E 0%, #B91C1C 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+    .logo span {
+      color: #E60000;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+    .logo-small {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #4A4A4A;
+      margin-left: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #222;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #E60000;
+    }
+
+    .btn-contact {
+      background-color: #E60000;
+      color: white !important;
+      padding: 10px 26px;
+      border-radius: 48px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 8px rgba(230,0,0,0.2);
+    }
+    .btn-contact:hover {
+      background-color: #B30000;
+      transform: scale(0.97);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 60px 0 40px 0;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-text {
+      flex: 1.1;
+    }
+    .hero-badge {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #E60000;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-text h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #111;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #3a3a3a;
+      max-width: 90%;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    .btn-cta-red {
+      background-color: #E60000;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 20px rgba(230,0,0,0.25);
+    }
+    .btn-cta-red:hover {
+      background-color: #C10000;
+      transform: translateY(-3px);
+    }
+    .hero-image {
+      flex: 1;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Section "Nos Incontournables" cartes interactives */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
+    }
+    .section-title span {
+      color: #E60000;
+      border-bottom: 3px solid #E60000;
+      padding-bottom: 6px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0 2rem;
+    }
+    .menu-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      border: 1px solid #f0f0f0;
+    }
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+    }
+    .card-img {
+      height: 240px;
+      overflow: hidden;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .menu-card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    .card-content {
+      padding: 1.6rem;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .card-price {
+      color: #E60000;
+      font-weight: 800;
+    }
+    .card-desc {
+      color: #555;
+      margin: 0.8rem 0;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+    .icon-minimal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      color: #E60000;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .icon-minimal i {
+      font-size: 1.1rem;
+    }
+
+    /* Notre Histoire section avec textures bois + pagne baoulé en filigrane */
+    .histoire-section {
+      margin: 80px 0;
+      background: #FEF9F0;
+      position: relative;
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    }
+    /* texture bois noble + motif pagne baoulé en filigrane */
+    .histoire-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('WhatsApp Image 2026-04-15 at 12.52.48.jpeg'), repeating-linear-gradient(45deg, rgba(210, 80, 40, 0.03) 0px, rgba(210, 80, 40, 0.03) 2px, transparent 2px, transparent 8px);
+      background-repeat: repeat, repeat;
+      opacity: 0.2;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+    /* ajout motif pagne supplémentaire */
+    .histoire-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 30%, rgba(220, 90, 40, 0.03) 2%, transparent 2.5%);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .histoire-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 3.5rem 3rem;
+      align-items: center;
+    }
+    .histoire-text {
+      flex: 1.2;
+    }
+    .histoire-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+    .histoire-text p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2c2c2c;
+      margin-bottom: 1.2rem;
+    }
+    .signature {
+      margin-top: 2rem;
+      font-style: italic;
+      font-weight: 500;
+      border-left: 4px solid #E60000;
+      padding-left: 1rem;
+    }
+    .histoire-img {
+      flex: 0.9;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+    }
+    .histoire-img img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Footer sombre avec blanc cassé, formulaire newsletter */
+    .footer {
+      background-color: #1A1A1A;  /* fond sombre chic */
+      color: #F5F0E6; /* blanc cassé */
+      padding: 60px 0 30px;
+      margin-top: 60px;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .footer-col h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: #E60000;
+    }
+    .footer-col p, .footer-col ul {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col a {
+      color: #F5F0E6;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .footer-col a:hover {
+      color: #E60000;
+    }
+    .social-icons {
+      display: flex;
+      gap: 18px;
+      margin-top: 15px;
+    }
+    .social-icons a {
+      background: rgba(255,255,255,0.1);
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      background: #E60000;
+      transform: translateY(-3px);
+    }
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .newsletter-form input {
+      padding: 12px 16px;
+      border-radius: 60px;
+      border: none;
+      background: #2A2A2A;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    .newsletter-form input::placeholder {
+      color: #aaa;
+    }
+    .newsletter-form button {
+      background: #E60000;
+      border: none;
+      padding: 12px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #B30000;
+    }
+    .map-placeholder {
+      background: #2A2A2A;
+      border-radius: 16px;
+      height: 130px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 0.8rem;
+      margin-top: 12px;
+      gap: 6px;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(245,240,230,0.2);
+      font-size: 0.8rem;
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 24px;
+      }
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 850px) {
+      .nav-wrapper {
+        flex-direction: column;
+        gap: 18px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+      }
+      .hero-text h1 {
+        font-size: 2.4rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .histoire-inner {
+        padding: 2rem;
+      }
+    }
+    @media (max-width: 550px) {
+      .container {
+        padding: 0 18px;
+      }
+      .btn-contact {
+        padding: 8px 18px;
+      }
+      .cards-grid {
+        gap: 1.2rem;
+      }
+    }
+
+    /* petites animations & accessibilité */
+    button, .menu-card, .btn-contact, .btn-cta-red {
+      cursor: pointer;
+    }
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav-wrapper">
+    <div class="logo">
+      AU DABALI<span>.</span><span class="logo-small">  cuisine ivoirienne</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">La Carte</a></li>
+      <li><a href="#">Nos Cuisines</a></li>
+      <li><a href="#">Réservation</a></li>
+      <li><a href="#">Privatisation</a></li>
+    </ul>
+    <a href="#" class="btn-contact">Contact <i class="fas fa-arrow-right"></i></a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section avec image réaliste Attiéké Poisson fumant -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">Sapé & Saveurs</div>
+        <h1>L'art du <br>Dabali authentique</h1>
+        <p>Au cœur d'Abidjan, vivez une expérience unique où la tradition ivoirienne rencontre la gastronomie contemporaine. Attiéké, foutou, sauce graine, poisson braisé... chaque plat raconte une histoire.</p>
+        <button class="btn-cta-red" onclick="alert('Réservez votre table chez Au Dabali ☎️ +225 07 07 12 34')">Découvrir la carte <i class="fas fa-utensils"></i></button>
+      </div>
+      <div class="hero-image">
+        <!-- Image réaliste HD d’Attiéké-Poisson fumant (professionnelle) -->
+        <img src="WhatsApp Image 2026-04-15 at 12.52.47.jpeg" 
+             alt="Plat emblématique ivoirien : attiéké au poisson braisé, fumant, dressage gastronomique"
+             onerror="this.src='https://images.pexels.com/photos/2983088/pexels-photo-2983088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Nos Incontournables : Cartes interactives plats ivoiriens -->
+  <div class="container">
+    <div class="section-title"><span>Nos Incontournables</span> ✨</div>
+    <div class="cards-grid">
+      <!-- Carte 1 : tchep sénégalais-->
+      <div class="menu-card">
+        <div class="card-img">
+          <img src="WhatsApp Image 2026-04-15 at 12.52.47 (1).jpeg" alt="Tchep au poisson">
+        </div>
+        <div class="card-content">
+          <h3>Tchep au poissin <span class="card-price">7 500 F</span></h3>
+          <p class="card-desc">tchep extra fin, poisson braisé au feu de bois, sauce tomate oignon, légumes croquants et piment maison.</p>
+          <div class="icon-minimal"><i class="fas fa-fire"></i> Grillé sur braise · Incontournable</div>
+        </div>
+      </div>
+      <!-- Carte 2 : Attiéké poulet braisé-->
+      <div class="menu-card">
+        <div class="card-img">
+          <img src="WhatsApp Image 2026-04-15 at 12.52.47 (3).jpeg" alt="attiéké poulet braisé">
+        </div>
+        <div class="card-content">
+          <h3>attiéké poulet braisé<span class="card-price">8 900 F</span></h3>
+          <p class="card-desc">Alloco/brochette viande, se, viande fumée et poisson séché.</p>
+          <div class="icon-minimal"><i class="fas fa-seedling"></i> Recette traditionnelle</div>
+        </div>
+      </div>
+      <!-- Carte 3 : placali sauce gombo -->
+      <div class="menu-card">
+        <div class="card-img">
+          <img src="WhatsApp Image 2026-04-15 at 12.52.47 (2).jpeg" alt="u">
+        </div>
+        <div class="card-content">
+          <h3>Placali & sauce gombo <span class="card-price">6 900 F</span></h3>
+          <p class="card-desc">Placali mijoté avec la sauce gombo, épices ivoiriennes. Un voyage gourmand.</p>
+          <div class="icon-minimal"><i class="fas fa-drumstick-bite"></i> Fait maison</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notre Histoire avec textures bois et pagne baoulé en filigrane -->
+  <div class="container">
+    <div class="histoire-section">
+      <div class="histoire-inner">
+        <div class="histoire-text">
+          <h2>Notre héritage, <br>votre plaisir</h2>
+          <p>Fondé par la famille Koné, Au Dabali rend hommage aux veillées culinaires d’autrefois. "Dabali" signifie convivialité, partage et authenticité. Chaque recette est transmise de mère en fille, sublimée par des produits frais du marché de Treichville.</p>
+          <p>Notre cuisine fusionne le souffle de la terre ivoirienne et l’élégance moderne. Bois noble, pagne baoulé tissé main, ambiance tamisée… Chaque détail évoque l’âme de la Côte d’Ivoire.</p>
+          <div class="signature">— La cheffe Amoin, gardienne des saveurs</div>
+        </div>
+        <div class="histoire-img">
+          <img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chef ivoirien préparant un plat traditionnel, ambiance bois et pagne">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer : fond sombre, Google Maps intégré, newsletter, horaires etc -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Au Dabali</h4>
+        <p>Cuisine authentique ivoirienne & mixologie. Zone 4, Boulevard Latrille, Abidjan.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Horaires</h4>
+        <p>Lundi - Jeudi : 11h30 – 22h30<br>
+        Vendredi - Samedi : 11h30 – 00h00<br>
+        Dimanche : 12h00 – 21h00<br>
+        <i class="fas fa-clock" style="color:#E60000;"></i> Service continu</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plan & accès</h4>
+        <!-- Google Maps intégré (simulation embed, lien maps réel) -->
+        <div class="map-placeholder" onclick="window.open('https://maps.google.com/?q=Abidjan+Zone+4+Cocody+Au+Dabali','_blank')" style="cursor: pointer;">
+          <i class="fas fa-map-marker-alt" style="font-size: 1.8rem; color:#E60000;"></i>
+          <span>📍 Boulevard Latrille, Abidjan</span>
+          <span style="font-size: 0.7rem;">Cliquez pour ouvrir Maps</span>
+          <iframe width="100%" height="100%" style="border:0; border-radius:12px; display:none;" loading="lazy"></iframe>
+        </div>
+        <!-- intéraction simplifiée: clic sur la div envoie vers google maps -->
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>Recevez nos offres et événements exclusifs</p>
+        <form class="newsletter-form" id="newsletterForm" action="#" method="post">
+          <input type="email" placeholder="Votre adresse email" required id="newsEmail">
+          <button type="submit">S'abonner <i class="fas fa-paper-plane"></i></button>
+        </form>
+        <p style="font-size: 0.7rem; margin-top: 10px;">Offre spéciale 10% sur première résa.</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Au Dabali – Restaurant ivoirien premium – Tous droits réservés.  &nbsp;|&nbsp;  Authenticité & modernité.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple interaction pour newsletter (feedback)
+  const formNews = document.getElementById('newsletterForm');
+  if(formNews) {
+    formNews.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsEmail');
+      if(emailInput.value.trim() !== '') {
+        alert(`Merci ${emailInput.value} ! Vous recevrez nos actualités et délices d'Abidjan.`);
+        emailInput.value = '';
+      } else {
+        alert('Veuillez saisir une adresse email valide.');
+      }
+    });
+  }
+
+  // petites interactions bonus pour les cartes (console)
+  const cards = document.querySelectorAll('.menu-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      console.log('Carte interactive cliquée, commande ou détail');
+      // simulate élégant: on pourrait rediriger mais on fait juste un alert léger
+      // pour rester cohérent avec la demande "interactive"
+      alert("✨ Découvrez ce plat sur notre carte complète ! ✨\nRéservation conseillée.");
+    });
+  });
+  // Lien de contact header + bouton hero
+  const btnHero = document.querySelector('.btn-cta-red');
+  if(btnHero) btnHero.addEventListener('click', () => {
+    // déjà alert dans onclick mais garder
+  });
+</script>
+</body>
+</html>
