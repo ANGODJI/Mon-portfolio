@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #2c3e50;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+}
+
+nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover, nav a.active {
+    background-color: #e67e22;
+}
+
+main {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+h2 {
+    color: #e67e22;
+    margin: 1.5rem 0 1rem 0;
+}
+
+/* Photo de profil */
+.photo-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.photo-merveille {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e67e22;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero {
+    text-align: center;
+    padding: 2rem 0;
+    background: #ecf0f1;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.sous-titre {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.accroche {
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.grille-competences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.carte-competence {
+    background: #ecf0f1;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #e67e22;
+}
+
+.carte-competence h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.projet {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+}
+
+.projet-contenu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.projet-description {
+    flex: 1;
+}
+
+.projet-description ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Bouton pour visiter le site */
+.lien-projet {
+    margin-top: 1.5rem;
+}
+
+.btn-visiter {
+    display: inline-block;
+    background-color: #e67e22;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-visiter:hover {
+    background-color: #d35400;
+}
+
+.contact-info {
+    background: #ecf0f1;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+}
+
+.disponibilite {
+    text-align: center;
+    background: #e67e22;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .projet-contenu {
+        flex-direction: column;
+    }
+    
+    nav a {
+        display: inline-block;
+        margin: 0.2rem;
+    }
+    
+    .photo-merveille {
+        width: 120px;
+        height: 120px;
+    }
+}
