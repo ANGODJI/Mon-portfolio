@@ -40,11 +40,10 @@ nav a:hover, nav a.active {
 main {
     max-width: 1100px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 2rem;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 2rem;
 }
 
 h1 {
@@ -56,6 +55,15 @@ h1 {
 h2 {
     color: #e67e22;
     margin: 1.5rem 0 1rem 0;
+}
+
+/* Titre de section */
+.section-titre {
+    color: #2c3e50;
+    border-bottom: 3px solid #e67e22;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Photo de profil */
@@ -73,9 +81,10 @@ h2 {
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
+/* Section héro (accueil) */
 .hero {
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem;
     background: #ecf0f1;
     border-radius: 10px;
     margin-bottom: 2rem;
@@ -96,6 +105,7 @@ h2 {
     font-style: italic;
 }
 
+/* Grille des compétences */
 .grille-competences {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -115,16 +125,11 @@ h2 {
     color: #2c3e50;
 }
 
+/* Projets */
 .projet {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 2rem;
-}
-
-.projet-contenu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
 }
 
 .projet-description {
@@ -134,11 +139,26 @@ h2 {
 .projet-description ul {
     margin-left: 1.5rem;
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Bouton pour visiter le site */
+.projet-description li {
+    margin-bottom: 0.3rem;
+}
+
+/* Code inline */
+.projet-description code {
+    background-color: #f0f0f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #e67e22;
+}
+
+/* Bouton visiter */
 .lien-projet {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .btn-visiter {
@@ -146,7 +166,7 @@ h2 {
     background-color: #e67e22;
     color: white;
     text-decoration: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 5px;
     font-weight: bold;
     transition: background 0.3s;
@@ -156,6 +176,48 @@ h2 {
     background-color: #d35400;
 }
 
+/* Bloc de code Python */
+.code-details {
+    margin: 1rem 0;
+}
+
+.code-details summary {
+    cursor: pointer;
+    color: #e67e22;
+    font-weight: bold;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.code-details summary:hover {
+    background-color: #ecf0f1;
+}
+
+.code-python {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 1rem 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Capture d'écran Python */
+.capture-python {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Page contact */
 .contact-info {
     background: #ecf0f1;
     padding: 1.5rem;
@@ -176,6 +238,12 @@ h2 {
     margin-top: 1.5rem;
 }
 
+.disponibilite h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+/* Pied de page */
 footer {
     text-align: center;
     padding: 1rem;
@@ -184,18 +252,29 @@ footer {
     margin-top: 2rem;
 }
 
+/* Version mobile (responsive) */
 @media (max-width: 768px) {
-    .projet-contenu {
-        flex-direction: column;
+    main {
+        padding: 1rem;
+        margin: 1rem;
     }
     
     nav a {
         display: inline-block;
         margin: 0.2rem;
+        padding: 0.4rem 0.8rem;
     }
     
     .photo-merveille {
         width: 120px;
         height: 120px;
+    }
+    
+    .grille-competences {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
     }
 }
